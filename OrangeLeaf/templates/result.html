@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ... (existing head content) ... -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Prediction Result</h1>
+        {% if file_path %}
+            <p class="text-center">Uploaded Image:</p>
+            <img src="{{ url_for('static', filename='uploads/' + file_path.split('/')[-1]) }}" class="img-fluid rounded mx-auto d-block mb-3" alt="Uploaded Image">
+            <p class="text-center">Predicted Class: {{ predicted_class }}</p>
+            <a href="/" class="btn btn-primary d-block mx-auto">Back to Home</a>
+        {% else %}
+            <p class="text-center">No image uploaded for prediction.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
